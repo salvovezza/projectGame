@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Rock Paper Scissors</title>
+  </head>
+  <body>    
+    <p>Rock Paper Scissors</p>
+    <button onclick="
+      
+      playGame('rock');
+    ">Rock</button>
+    <button onclick="           
+      playGame('paper');
+    ">Paper</button>
+    <button onclick="     
+    /* console.log(pickComputerMove()); 
+    */
+    playGame('scissors');
+    
+    ">Scissors</button>
+
+    <button onclick="
+      score.wins = 0;
+      score.losses = 0;
+      score.ties = 0;
+      localStorage.removeItem('score'); // we're going to remove the score from localStorage
+    ">Reset Score</button>
+
+    <script>   
+
+    /*
+    const score = JSON.parse(localStorage.getItem('score')); 
+    as continuation of the explanation: we're going to load the score that we just saved from 'localStorage', using 'localStorage.getItem. And the score was saved as a JSON string: 'score', so we need to convert it back into an object using 'JSON.parse'; so, that's how we use the JSON object and the local storage object to save our score more permanently in order to avoid the score being restarted when we refresh the Web Page.
+    And now, to make work the  'Reset Score' button, propertly, we need tto remove the score from 'localStorage', otherwise, if we press this button, and then refresh the Web Page, and play the game, it will just grab the old score from 'localStorage'. So, in order to fix this issue, we are going to remove the 'score' from 'localStorage', so we will type the line of code under 'score ties = 0;', as follows:
+    localStorage removeItem('score);
+    However, this will give us an error because by removing the 'score' from 'localStorage', when we load the page, now the 'score' in the following piece of code doesn't exist when running the program:
+    localStorage.getItem('score')
+    So, because 'score' cannot be found in 'localStorage', when we run the program, it's going to give us a value called 'null'. And at the bottom, when it tries to access any property on 'null' from the following code, it will give us an error:
+        if (result === 'You win') {          
+          score.wins += 1;
+        } else if (result === 'You lose') {
+          score.losses += 1;
+        } else if (result === 'Tie') {
+          score.ties += 1;
+        }
+    So, a way to solve this problem is that if there is no 'score' in 'localStorage', we're going to give it a default value, and we can do that by using an 'if' statement as follows:
+        if (score === null) {
+          score = {
+            wins: 0,
+            losses: 0,
+            ties: 0
+          };
+        }
+    So, in this code above, if the score is equal to 'null', we're going to give a default score by making score equal to the object we had earlier, and because we have to reassign a variable, we have to change it from 'const' to 'let', the following line of code:
+     const score = JSON.parse(localStorage.getItem('score')); 
+     has to change to:
+     let score = JSON.parse(localStorage.getItem('score')); 
+     Now, the score will be 'null' because we removed it, and the if code above, will give it a default score, so everything works now, if the score i 'null, the condition will return 'true', and if the score exists, it's an object, then this condition will return 'false'.
+
+
+    
+
+     change this line of code above, from const to let because we have to reassign the variable 'score'
+     */
+    let score = JSON.parse(localStorage.getItem('score'));
+    
+    if ('score' === null) {
+      score = {
+        wins: 0,
+        losses: 0,
+        ties: 0
+      };
+    }      
+
+      function playGame(playerMove) {
+        const computerMove = pickComputerMove();
+   
+        let result = '';    
+        
+        if (playerMove === 'scissors') {
+          if (computerMove === 'scissors') {
+            result = 'Tie';
+          } else if (computerMove === 'rock') {
+            result = 'You lose';
+          } else if (computerMove === 'paper') {
+            result = 'You win';
+          }    
+
+        } else if (playerMove === 'paper') {
+            if (computerMove === 'paper') {
+              result = 'Tie';
+            } else if (computerMove === 'scissors') {
+              result = 'You lose';
+            } else if (computerMove === 'rock') {
+              result = 'You win';
+            }    
+            
+        } else if (playerMove === 'rock') {
+          if (computerMove === 'rock') {
+            result = 'Tie';
+          } else if (computerMove === 'paper') {
+            result = 'You lose';
+          } else if (computerMove === 'scissors') {
+            result = 'You win';
+          } 
+        }        
+
+        if (result === 'You win') {          
+          score.wins += 1;
+        } else if (result === 'You lose') {
+          score.losses += 1;
+        } else if (result === 'Tie') {
+          score.ties += 1;
+        }
+        /* When we update our score in this code above, after we update the score, we're going to save it in local storage using 'localStorage.setItem'. Now, 'localStorage' only supports strings, so we have to convert our score object into a JSON string using 'JSON.stringify' in the line of code below. And then, after we've saved 'JSON.stringify(score)' into 'localStorage', when we load the page up, with the line of code: 
+        'const score = JSMO.parse(localStorage.getItem('score'));
+        see there for further explanation
+         */
+        
+
+       // localStorage.setItem('message', 'hello');
+       localStorage.setItem('score', JSON.stringify(score)); // we use JSON syntax instead of JavaScript syntax when we send data between computers that might use different programming languages because JSON is understood by almost all propgramming languages and so it is more universal in comparison to JavaScript
+
+        alert(`You picked ${playerMove}. Computer picked ${computerMove}: ${result}
+Wins: ${score.wins}, Losses: ${score.losses}, Ties: ${score.ties}`);
+      }
+      /*let computerMove = '';  move this variable back into the function
+      */    
+      function pickComputerMove() {
+        const randomNumber = Math.random(); 
+
+        let computerMove = '';
+        
+      
+        if (randomNumber >= 0 && randomNumber < 1/3) {        
+          computerMove = 'rock';
+        } else if (randomNumber >= 1 / 3 && randomNumber < 2/3) {
+        // console.log('paper');
+          computerMove = 'paper';
+        } else if (randomNumber >= 2 / 3 && randomNumber < 1) {
+       // console.log('scissors');
+          computerMove = 'scissors'; // Sol, we'll now learn how to access this variable outside of this scope
+        }
+        return computerMove; 
+      }       
+    </script>
+  </body>
+</html>
