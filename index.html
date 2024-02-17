@@ -2,7 +2,7 @@
 <html>
   <head>
     <br></br>
-    <p class="leftSpace"><tytle>Game: Calculator</tytle></p>
+    <h1><p class="leftSpaceReduced"><tytle>Game: Calculator</tytle></p></h1>
     <style>
     .buttonClear{
       /*margin-left: 112px;*/
@@ -14,64 +14,82 @@
     .leftSpace{
       margin-left: 100px;
     }
+    .leftSpaceReduced{
+      margin-left: 50px;
+    }
+    .yellow-button{
+      background-color: yellow;
+    }
+    .green-button{
+      background-color: greenyellow;
+    }     
+    .violet-button{
+      background-color: rgb(207, 159, 255);
+    }     
+    .cyan-button{
+      background-color: cyan;
+    }     
+    .red-button{
+      background-color: rgb(255, 127, 127);
+    }
     </style>
   </head>
   <body>
     <p class="topSpace leftSpace">
-      <button onclick="
+      <button class="cyan-button" onclick="
        // calculation += '1';
        // console.log(calculation);
        mainCalculation('1');
       ">1</button>
-      <button onclick="
+      <button class="cyan-button" onclick="
         mainCalculation('2');
       ">2</button>
-      <button onclick="
+      <button class="cyan-button" onclick="
         mainCalculation('3');
       ">3</button>
-      <button onclick="
+      <button class="yellow-button" onclick="
         mainCalculation(' + ');
       ">+</button>
     </p>
 
     <p class="leftSpace">
-      <button onclick="
+      <button class="cyan-button" onclick="
         mainCalculation('4');
       ">4</button>
-      <button onclick="
+      <button class="cyan-button" onclick="
         mainCalculation('5');
       ">5</button>
-      <button onclick="
+      <button class="cyan-button" onclick="
         mainCalculation('6');
       ">6</button>
-      <button onclick="
+      <button class="yellow-button" onclick="
         mainCalculation(' - ');
       ">-</button>
     </p>
 
     <p class="leftSpace">
-      <button onclick="
+      <button class="cyan-button" onclick="
         mainCalculation('7');
       ">7</button>
-      <button onclick="
+      <button class="cyan-button" onclick="
         mainCalculation('8');
       ">8</button>
-      <button onclick="
+      <button class="cyan-button" onclick="
         mainCalculation('9');
       ">9</button>
-      <button onclick="
+      <button class="yellow-button" onclick="
         mainCalculation(' * ');
       ">*</button>
     </p>
 
     <p class="leftSpace">
-      <button onclick="
+      <button class="violet-button" onclick="
         mainCalculation('.');
       ">.</button>
-      <button onclick="
+      <button class="cyan-button" onclick="
         mainCalculation('0');
       ">0</button>
-      <button onclick="
+      <button class="green-button" onclick="
         // Note: eval() takes a string and runs it as code.
         // Avoid using eval() in real world projects since
         // it can potentially be given harmful code to run.
@@ -79,13 +97,13 @@
         calculation = eval(calculation);
         console.log(calculation);
       ">=</button>
-      <button onclick="
+      <button class="yellow-button" onclick="
         mainCalculation(' / ');
       ">/</button>
     </p>
 
     <p class="buttonClear">
-      <button onclick="
+      <button class="red-button" onclick="
         let message = 'Calculation has been reset';
         calculation = '';
         console.log(message, calculation);
