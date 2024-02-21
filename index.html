@@ -88,20 +88,16 @@
       ">.</button>
       <button class="cyan-button" onclick="
         mainCalculation('0');
-      ">0</button>
-      <button class="green-button" onclick="
-        // Note: eval() takes a string and runs it as code.
-        // Avoid using eval() in real world projects since
-        // it can potentially be given harmful code to run.
-        // Only use eval() for learning purposes.
-        calculation = eval(calculation);
-        console.log(calculation);
+      ">0</button>     
+      <button class="green-button" onclick="       
+        calculation = eval(calculation);     
+        calculateEqual(calculation);
       ">=</button>
       <button class="yellow-button" onclick="
         mainCalculation(' / ');
       ">/</button>
     </p>
-
+    
     <p class="buttonClear">
       <button class="red-button" onclick="
         let message = 'Calculation has been reset';
@@ -109,14 +105,22 @@
         console.log(message, calculation);
       ">Clear</button>
     </p>
+    
+  <a style="color: red" class="leftSpaceReduced yellow-button">Equals to:</a> <font size="+10" class="js-calculation"></font> 
 
     <script>
       let calculation = '';
       function mainCalculation(strParameter) {
         calculation += strParameter;
+        
         console.log(calculation);
       }
-    </script>
-    
+     
+     function calculateEqual (calculation) {
+      document.querySelector('.js-calculation').innerHTML = calculation;
+      calculation = 0;
+     }
+       
+    </script>    
   </body>
 </html>
