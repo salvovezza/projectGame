@@ -31,7 +31,7 @@
     }     
     .red-button{
       background-color: rgb(255, 127, 127);
-    }
+    }  
     </style>
   </head>
   <body>
@@ -102,16 +102,20 @@
       <button class="red-button" onclick="
         let message = 'Calculation has been reset';
         calculation = '';
-        console.log(message, calculation);
+        console.log(message, calculation);       
+        calculateEqual(calculation); 
       ">Clear</button>
     </p>
     
-  <a style="color: red" class="leftSpaceReduced yellow-button">Use the buttons of this calculator to make your calculation and when you finish calculating, plress the = sign to get the result as follows:</a> <font size="+10" class="js-calculation"></font> 
+  <a style="color: red" class="leftSpaceReduced yellow-button">The results will be displayed below by clicking the = button:</a>   
+  <p></p>
+  <font size="+10" class="leftSpace js-calculation"></font> 
 
     <script>
       let calculation = '';
       function mainCalculation(strParameter) {
-        calculation += strParameter;        
+        calculation += strParameter;
+        
         console.log(calculation);
       }
      
